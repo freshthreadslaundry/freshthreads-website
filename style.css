@@ -1,0 +1,93 @@
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f7f9fc;
+  color: #333;
+}
+
+header {
+  background: #002f6c;
+  color: white;
+  padding: 10px 20px;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.logo span {
+  font-weight: normal;
+  font-size: 14px;
+  margin-left: 5px;
+}
+
+.hero {
+  position: relative;
+  text-align: center;
+}
+
+.hero img {
+  width: 100%;
+  height: auto;
+}
+
+.hero-text {
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.85);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.hero-text h1 {
+  margin: 0;
+  font-size: 32px;
+}
+
+.whatsapp-btn {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 10px 20px;
+  background: #25D366;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: bold;
+}
+
+.services {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.services h2 {
+  font-size: 28px;
+}
+
+.services ul {
+  list-style: none;
+  padding: 0;
+  font-size: 18px;
+}
+
+.services li {
+  margin: 10px 0;
+}
+
+footer {
+  background: #002f6c;
+  color: white;
+  text-align: center;
+  padding: 10px;
+}
