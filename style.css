@@ -202,7 +202,7 @@ nav ul li a:hover {
     width: 80px;
     height: 80px;
     margin-bottom: 20px;
-    filter: invert(39%) sepia(85%) saturate(306%) hue-rotate(85deg) brightness(98%) contrast(93%); /* Adjust to match green color */
+    /*filter: invert(39%) sepia(85%) saturate(306%) hue-rotate(85deg) brightness(98%) contrast(93%); /* Adjust to match green color */
 }
 
 .service-item h4 {
