@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Image Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 90%;
+            max-width: 600px;
+        }
+
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        textarea {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            resize: vertical;
+            min-height: 80px;
+            font-size: 1rem;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+
+        #imageContainer {
+            margin-top: 30px;
+            border: 1px dashed #ccc;
+            padding: 20px;
+            min-height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            border-radius: 8px;
+            background-color: #e9e9e9;
+        }
+
+        #imageContainer img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-top: 15px;
+        }
+
+        .loading {
+            font-size: 1.2rem;
+            color: #555;
+        }
+
+        .error {
+            color: #d9534f;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>AI Image Generator</h1>
+        <label for="promptInput">Enter your image description:</label>
+        <textarea id="promptInput" placeholder="e.g., A futuristic city at sunset, neon lights, flying cars"></textarea>
+        <button id="generateBtn">Generate Image</button>
+
+        <div id="imageContainer">
+            <p>Your generated image will appear here.</p>
+        </div>
+    </div>
+
+    <script>
+        const promptInput = document.getElementById('promptInput');
+        const generateBtn = document.getElementById('generateBtn');
+        const imageContainer = document.getElementById('imageContainer');
+
+        generateBtn.addEventListener('click', async () => {
+            const prompt = promptInput.value.trim();
+            if (!prompt) {
+                alert('Please enter a description for the image!');
+                return;
+            }
+
+            imageContainer.innerHTML = '<p class="loading">Generating image... Please wait.</p>';
+            generateBtn.disabled = true;
+
+            try {
+                // IMPORTANT: In a real application, you would NOT make a direct API call to Gemini
+                // from client-side JavaScript with your API key. Instead, you would:
+                // 1. Send the prompt to your own secure backend server.
+                // 2. Your backend server would then make the API call to Gemini (using your API key).
+                // 3. Your backend server would send the generated image URL/data back to the frontend.
+
+                // --- Placeholder for an actual API call ---
+                // For demonstration purposes, let's simulate an API call
+                // In a real scenario, this would be a fetch() call to your backend or a mock API
+                const imageUrl = await simulateImageGeneration(prompt); 
+                
+                if (imageUrl) {
+                    imageContainer.innerHTML = `<img src="${imageUrl}" alt="Generated Image">`;
+                } else {
+                    imageContainer.innerHTML = '<p class="error">Failed to generate image. Please try again.</p>';
+                }
+
+            } catch (error) {
+                console.error('Error generating image:', error);
+                imageContainer.innerHTML = `<p class="error">An error occurred: ${error.message}.</p>`;
+            } finally {
+                generateBtn.disabled = false;
+            }
+        });
+
+        // --- SIMULATED IMAGE GENERATION FUNCTION ---
+        // Replace this with your actual API call logic
+        async function simulateImageGeneration(prompt) {
+            // In a real scenario, this would be a fetch() call to your backend:
+            // const response = await fetch('/api/generate-image', {
+            //     method: 'POST',
+            //     headers: { 'Content-Type': 'application/json' },
+            //     body: JSON.stringify({ prompt: prompt })
+            // });
+            // const data = await response.json();
+            // return data.imageUrl; // Assuming your backend returns an imageUrl
+
+            console.log("Simulating image generation for prompt:", prompt);
+            
+            // Simulate a network delay
+            await new Promise(resolve => setTimeout(Math.random() * 2000 + 1000, resolve)); 
+
+            // Simulate success or failure
+            const success = Math.random() > 0.1; // 90% chance of success
+            if (success) {
+                // Replace with actual image URL from your Gemini API response
+                // For now, using a placeholder image from Lorem Picsum
+                return `https://picsum.photos/600/400?random=${Math.random()}`; 
+            } else {
+                throw new Error("Simulated API error: Could not generate image.");
+            }
+        }
+    </script>
+</body>
+</html>
