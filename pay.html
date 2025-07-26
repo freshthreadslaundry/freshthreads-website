@@ -174,7 +174,7 @@
       if (status === "Paid") {
         html += `<div style="text-align: center; margin-top: 30px;"><span class="badge-paid">✅ PAID</span></div>`;
       } else if (isMobile) {
-    html += `
+  html += `
     <div class="text-center mt-3">
       <button class="btn-pay" onclick="downloadQR()">Download QR</button>
     </div>
@@ -195,7 +195,7 @@
       }
     </script>
   `;
-      } else {
+} else {
         html += `<div class="text-center mt-3 qr-box"><p><strong>Scan to Pay</strong></p><img src="${qrUrl}" alt="QR Code"></div>`;
       }
 
