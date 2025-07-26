@@ -174,7 +174,11 @@
       if (status === "Paid") {
         html += `<div style="text-align: center; margin-top: 30px;"><span class="badge-paid">✅ PAID</span></div>`;
       } else if (isMobile) {
-        html += `<div class="text-center mt-3"><button class="btn-pay" onclick="window.location.href='${upiLink}'">Pay Now</button></div>`;
+    html += `<div class="text-center mt-3 qr-box">
+    <p><strong>Scan or Download QR</strong></p>
+    <img src="${qrUrl}" alt="QR Code">
+    <a href="${qrUrl}" download="upi_qr.png" class="btn-pay mt-2 d-block">Download QR</a>
+  </div>`;
       } else {
         html += `<div class="text-center mt-3 qr-box"><p><strong>Scan to Pay</strong></p><img src="${qrUrl}" alt="QR Code"></div>`;
       }
