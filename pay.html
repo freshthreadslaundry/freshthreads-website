@@ -88,6 +88,22 @@
 <script>
   const token = window.location.pathname.split("/").pop();
   const apiUrl = `https://sta.freshthreadslaundry.co.in/api/bill-info/${token}`;
+  let qrUrl = ""; // <-- make it global
+
+  function downloadQR() {
+    fetch(qrUrl)
+      .then(res => res.blob())
+      .then(blob => {
+        const link = document.createElement("a");
+        link.href = URL.createObjectURL(blob);
+        link.download = "upi_qr.png";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(link.href);
+      })
+      .catch(err => alert("QR download failed: " + err.message));
+  }
 
   fetch(apiUrl)
     .then(res => res.json())
@@ -104,7 +120,7 @@
 
       const upiLink = `upi://pay?pa=freshthreads0549@iob&pn=Fresh Threads Laundry&am=${final_total.toFixed(2)}&cu=INR`;
       const isMobile = /Android|iPhone|iPad/i.test(navigator.userAgent);
-      const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(upiLink)}`;
+      qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(upiLink)}`;
 
       let html = `
         <div class="container px-0" style="font-size: 14px;">
@@ -137,9 +153,9 @@
           <thead>
             <tr>
               <th style="width: 45%;">Item</th>
-              <th class="text-right" style="width: 15%; white-space: nowrap;">Qty</th>
-              <th class="text-right" style="width: 20%; white-space: nowrap;">Rate</th>
-              <th class="text-right" style="width: 20%; white-space: nowrap;">Total</th>
+              <th class="text-right">Qty</th>
+              <th class="text-right">Rate</th>
+              <th class="text-right">Total</th>
             </tr>
           </thead>
           <tbody>
@@ -154,18 +170,18 @@
           </tbody>
           <tfoot>
             <tr>
-              <td colspan="3" style="text-align: right;">Subtotal</td>
-              <td style="text-align: right; white-space: nowrap;">₹${subtotal.toFixed(2)}</td>
+              <td colspan="3" class="text-right">Subtotal</td>
+              <td class="text-right">₹${subtotal.toFixed(2)}</td>
             </tr>
             ${discount > 0 ? `
             <tr>
-              <td colspan="3" style="text-align: right;">Discount</td>
-              <td style="text-align: right; white-space: nowrap;">- ₹${discount.toFixed(2)}</td>
+              <td colspan="3" class="text-right">Discount</td>
+              <td class="text-right">- ₹${discount.toFixed(2)}</td>
             </tr>` : ""}
             <tr>
-              <td colspan="2" style="font-weight: bold;">Total Items: ${items.reduce((sum, i) => sum + parseInt(i.items), 0)}</td>
-              <td style="text-align: right;"><strong>Final Bill</strong></td>
-              <td style="text-align: right; white-space: nowrap;"><strong>₹${final_total.toFixed(2)}</strong></td>
+              <td colspan="2">Total Items: ${items.reduce((sum, i) => sum + parseInt(i.items), 0)}</td>
+              <td class="text-right"><strong>Final Bill</strong></td>
+              <td class="text-right"><strong>₹${final_total.toFixed(2)}</strong></td>
             </tr>
           </tfoot>
         </table>
@@ -174,12 +190,8 @@
       if (status === "Paid") {
         html += `<div style="text-align: center; margin-top: 30px;"><span class="badge-paid">✅ PAID</span></div>`;
       } else if (isMobile) {
-  html += `
-    <div class="text-center mt-3">
-      <button class="btn-pay" onclick="downloadQR()">Download QR</button>
-    </div>
-  `;
-} else {
+        html += `<div class="text-center mt-3"><button class="btn-pay" onclick="downloadQR()">Download QR</button></div>`;
+      } else {
         html += `<div class="text-center mt-3 qr-box"><p><strong>Scan to Pay</strong></p><img src="${qrUrl}" alt="QR Code"></div>`;
       }
 
@@ -188,24 +200,11 @@
       </div>`;
 
       document.getElementById("billContent").innerHTML = html;
-      function downloadQR() {
-  fetch(qrUrl)
-    .then(res => res.blob())
-    .then(blob => {
-      const link = document.createElement("a");
-      link.href = URL.createObjectURL(blob);
-      link.download = "upi_qr.png";
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-      URL.revokeObjectURL(link.href);
-    })
-    .catch(err => alert("QR download failed: " + err.message));
-}
     })
     .catch(err => {
       document.getElementById("billContent").innerHTML = `<p class='text-danger'>${err.message}</p>`;
     });
 </script>
+
 </body>
 </html>
