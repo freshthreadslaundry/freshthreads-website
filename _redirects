@@ -1,1 +1,1 @@
-/pay/:token  /pay.html  200
+/:token   /pay/:token   200
