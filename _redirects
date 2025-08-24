@@ -1,1 +1,2 @@
-/:token   /pay/:token   200
+/pay/:token     /customer_invoice.html   200
+/:token         /pay/:token              200
