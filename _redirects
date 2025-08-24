@@ -1,2 +1,10 @@
-/pay/:token     /customer_invoice.html   200
-/:token         /pay/:token              200
+# Old links (already sent to customers) keep working:
+# /pay/<token> → serves pay.html
+/pay/:token    /pay.html    200
+
+# New short links on the pay. subdomain:
+# https://pay.freshthreadslaundry.co.in/<token> → serves pay.html
+https://pay.freshthreadslaundry.co.in/:token   /pay.html   200
+
+# (If you have a SPA rule, keep it LAST)
+# /*               /index.html   200

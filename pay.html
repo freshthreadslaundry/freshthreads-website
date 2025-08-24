@@ -86,7 +86,24 @@
 </div>
 
 <script>
-  const token = window.location.pathname.split("/").pop();
+  function getInvoiceToken() {
+    const parts = window.location.pathname.split("/").filter(Boolean); 
+    const host = window.location.hostname.toLowerCase();
+
+    // Case 1: Old style → /pay/<token>
+    if (parts[0] === "pay" && parts[1]) return parts[1].trim();
+
+    // Case 2: New style on pay. subdomain → /<token>
+    if (host.startsWith("pay.") && parts[0]) return parts[0].trim();
+
+    // Optional fallback: query param ?t=<token>
+    const usp = new URLSearchParams(window.location.search);
+    if (usp.get("t")) return usp.get("t").trim();
+
+    return "";
+  }
+
+  const token = getInvoiceToken();
   const apiUrl = `https://sta.freshthreadslaundry.co.in/api/bill-info/${token}`;
   let qrUrl = ""; // <-- make it global
 
