@@ -24,12 +24,20 @@
     .mb-1 {
       margin-bottom: 5px;
     }
-    .table td, .table th {
-      padding: 2px 4px;
-      vertical-align: top;
-      font-size: 12px;
-      white-space: nowrap;
-    }
+.table td, .table th {
+  padding: 2px 4px;
+  vertical-align: top;
+  font-size: 12px;
+  white-space: nowrap; /* keep default */
+}
+
+/* ✅ Allow wrapping in the Item column */
+.table td:first-child, 
+.table th:first-child {
+  white-space: normal;   /* allow wrapping */
+  word-break: break-word; /* break long words */
+}
+
     .table thead th {
       border-bottom: 1px solid #ddd;
     }
