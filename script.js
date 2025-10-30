@@ -9,25 +9,25 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Smooth scrolling for navigation links
-    document.querySelectorAll('nav a').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
+    
+// Enhanced nav link handling: smooth-scroll only for on-page hashes
+document.querySelectorAll('nav a').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        const href = this.getAttribute('href') || '';
+        if (href.startsWith('#')) {
             e.preventDefault();
-
-            const targetId = this.getAttribute('href');
-            if (targetId.startsWith('#')) { // Ensure it's an internal anchor link
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - header.offsetHeight, // Adjust for fixed header
-                        behavior: 'smooth'
-                    });
-                }
+            const targetElement = document.querySelector(href);
+            const header = document.querySelector('header');
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop - (header ? header.offsetHeight : 0),
+                    behavior: 'smooth'
+                });
             }
-
-            // Close mobile menu after clicking a link
-            if (header.classList.contains('active')) {
-                header.classList.remove('active');
+            const headerEl = document.querySelector('header');
+            if (headerEl && headerEl.classList.contains('active')) {
+                headerEl.classList.remove('active');
             }
-        });
+        }
     });
 });

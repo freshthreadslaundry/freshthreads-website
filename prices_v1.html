@@ -1,0 +1,424 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Price List • Fresh Threads Laundry & Dry Cleaning</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    .price-hero{background:var(--light-bg);padding:60px 0;margin-bottom:24px}
+    .price-hero h2{font-size:2rem;margin-bottom:12px}
+    .price-search{display:flex;gap:12px;align-items:center;margin-top:12px}
+    .price-search input{flex:1;padding:12px;border:1px solid #ddd;border-radius:8px}
+    .accordion{max-width:1100px;margin:0 auto 30px}
+    .acc-item{background:#fff;border:1px solid #eee;border-radius:12px;margin-bottom:12px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.04)}
+    .acc-head{display:flex;justify-content:space-between;align-items:center;padding:16px 20px;cursor:pointer}
+    .acc-head h3{font-size:1.1rem}
+    .acc-body{display:none;padding:0 16px 16px}
+    .acc-item.open .acc-body{display:block}
+    .price-table{width:100%;border-collapse:collapse;margin-top:14px;font-size:.98rem}
+    .price-table th,.price-table td{border-bottom:1px dashed #e7e7e7;padding:10px 8px;text-align:left;vertical-align:top}
+    .price-table th{background:#fafafa;font-weight:600}
+    .note{font-size:.9rem;color:#666;margin-top:10px}
+    .download{margin-top:8px}
+    .chip{display:inline-block;background:#f1f5f9;border:1px solid #e2e8f0;border-radius:9999px;padding:4px 10px;font-size:.8rem}
+    .muted{color:#777}
+  </style>
+</head>
+<body>
+<header>
+  <div class="container">
+    <div class="logo"><h1>Fresh Threads Laundry & Dry Cleaning</h1></div>
+    <nav>
+      <ul>
+        <li><a href="index.html#home">Home</a></li>
+        <li><a href="index.html#services">Services</a></li>
+        <li><a href="prices.html">Prices</a></li>
+        <li><a href="index.html#about">About Us</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <a href="https://wa.me/+917036022033" class="whatsapp-btn header-whatsapp" target="_blank">
+      <i class="fab fa-whatsapp"></i> WhatsApp Us
+    </a>
+    <div class="menu-toggle"><i class="fas fa-bars"></i></div>
+  </div>
+</header>
+
+<main>
+  <section class="price-hero">
+    <div class="container">
+      <h2>Transparent Pricing</h2>
+      <p class="muted">All prices in INR (₹). Items marked with * are starting prices — final price varies by size and fabric quality.</p>
+      <div class="price-search">
+        <i class="fas fa-search"></i>
+        <input id="priceSearch" type="text" placeholder="Search an item (e.g., Silk Saree, Jeans, Comforter, Blazer)">
+        <span class="chip" title="Wash & Fold / Ironing & Stiffening availability varies by item.">Service availability varies</span>
+      </div>
+      <p class="download"><a href="Fresh Threads Price List.docx" download>Download full price list (DOCX)</a></p>
+    </div>
+  </section>
+
+  <section class="container">
+    <div class="accordion" id="priceAccordion">
+
+      <!-- Women's World -->
+      <div class="acc-item">
+        <div class="acc-head"><h3>For Her</h3><i class="fas fa-chevron-down"></i></div>
+        <div class="acc-body">
+          <table class="price-table">
+            <thead>
+              <tr><th>Item</th><th>Dry Clean</th><th>Only Steam Ironing</th><th>Stiffening</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Shirt / T‑Shirt</td><td>₹95</td><td>₹25</td><td>₹30</td></tr>
+              <tr><td>Shirt (Silk)</td><td>₹105</td><td>₹25</td><td>—</td></tr>
+              <tr><td>Shirt (Heavy work)</td><td>₹115</td><td>₹25</td><td>₹30</td></tr>
+              <tr><td>Top (Plain)</td><td>₹95</td><td>₹30</td><td>₹30</td></tr>
+              <tr><td>Top (Silk)</td><td>₹105</td><td>₹40</td><td>—</td></tr>
+              <tr><td>Top (Heavy Work)*</td><td>₹115</td><td>₹45</td><td>₹40</td></tr>
+              <tr><td>Trouser / Jeans</td><td>₹105</td><td>₹25</td><td>₹30</td></tr>
+              <tr><td>Short Kurti (Plain)</td><td>₹119</td><td>₹30</td><td>—</td></tr>
+              <tr><td>Short Kurti (Silk)</td><td>₹119</td><td>₹35</td><td>—</td></tr>
+              <tr><td>Short Kurti (Work)</td><td>₹129</td><td>₹40</td><td>—</td></tr>
+              <tr><td>Only Kurta*</td><td>₹149</td><td>₹40</td><td>₹30</td></tr>
+              <tr><td>Short Kameez*</td><td>₹129</td><td>₹45</td><td>—</td></tr>
+              <tr><td>Long Kameez*</td><td>₹199</td><td>₹65</td><td>—</td></tr>
+              <tr><td>Shalwar</td><td>₹95</td><td>₹45</td><td>₹35</td></tr>
+              <tr><td>Pyjama (Plain)</td><td>₹99</td><td>₹30</td><td>₹30</td></tr>
+              <tr><td>Pyjama (Silk)</td><td>₹119</td><td>₹30</td><td>—</td></tr>
+              <tr><td>Palazzo (Plain)</td><td>₹129</td><td>₹35</td><td>—</td></tr>
+              <tr><td>Palazzo (Silk)</td><td>₹149</td><td>₹35</td><td>—</td></tr>
+              <tr><td>Palazzo (Heavy)*</td><td>₹199</td><td>₹45</td><td>—</td></tr>
+              <tr><td>Short Skirt</td><td>₹99</td><td>₹25</td><td>—</td></tr>
+              <tr><td>Long Skirt</td><td>₹129</td><td>₹45</td><td>—</td></tr>
+              <tr><td>Woolen Sweater</td><td>₹179</td><td>₹45</td><td>—</td></tr>
+              <tr><td>Dress*</td><td>₹179</td><td>₹55</td><td>—</td></tr>
+              <tr><td>Blazer / Coat</td><td>₹249</td><td>₹100</td><td>—</td></tr>
+              <tr><td>Lehenga (Plain)</td><td>₹249</td><td>₹99/149</td><td>—</td></tr>
+              <tr><td>Lehenga (Silk)*</td><td>₹279</td><td>₹99/149</td><td>—</td></tr>
+              <tr><td>Lehenga (Heavy)*</td><td>₹399/499</td><td>₹199</td><td>—</td></tr>
+              <tr><td>Lehenga (5 Layers)*</td><td>₹699/799</td><td>₹299</td><td>—</td></tr>
+              <tr><td>Chaniya*</td><td>₹399</td><td>₹195</td><td>—</td></tr>
+              <tr><td>Choli*</td><td>₹199</td><td>₹110</td><td>—</td></tr>
+              <tr><td>Ghagra (Plain)</td><td>₹399</td><td>₹80</td><td>—</td></tr>
+              <tr><td>Ghagra (Multi‑Colored)*</td><td>₹499</td><td>₹100</td><td>—</td></tr>
+              <tr><td>Jump Suit</td><td>₹249</td><td>₹100</td><td>—</td></tr>
+              <tr><td>Long Burqa</td><td>₹279</td><td>₹120</td><td>—</td></tr>
+              <tr><td>Anarkali Kurta*</td><td>₹399</td><td>₹149</td><td>—</td></tr>
+              <tr><td>Gown (Plain)*</td><td>₹349</td><td>₹140</td><td>—</td></tr>
+              <tr><td>Gown (Medium)*</td><td>₹449</td><td>₹190</td><td>—</td></tr>
+              <tr><td>Gown (Heavy)*</td><td>₹549</td><td>₹250</td><td>—</td></tr>
+              <tr><td>Gown (6 layers)*</td><td>₹799</td><td>₹375</td><td>—</td></tr>
+            </tbody>
+          </table>
+          <p class="note">Important: For only steam ironing, garments are delivered in bulk packing. Items marked * are starting prices.</p>
+        </div>
+      </div>
+
+      <!-- Sarees & Accessories -->
+      <div class="acc-item">
+        <div class="acc-head"><h3>Sarees & Accessories</h3><i class="fas fa-chevron-down"></i></div>
+        <div class="acc-body">
+          <table class="price-table">
+            <thead>
+              <tr><th>Item</th><th>Dry Clean</th><th>Only Steam Ironing</th><th>Stiffening</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Cotton Saree</td><td>₹299</td><td>₹100</td><td>₹160</td></tr>
+              <tr><td>Netted Saree</td><td>₹249/279</td><td>₹100</td><td>—</td></tr>
+              <tr><td>Silk Saree</td><td>₹329</td><td>₹100</td><td>—</td></tr>
+              <tr><td>Banaras Saree</td><td>₹349</td><td>₹100</td><td>—</td></tr>
+              <tr><td>Semi Pattu</td><td>₹399</td><td>₹100</td><td>—</td></tr>
+              <tr><td>Pattu Saree</td><td>₹449</td><td>₹100</td><td>—</td></tr>
+              <tr><td>Plain Blouse</td><td>₹99</td><td>₹25</td><td>—</td></tr>
+              <tr><td>Heavy Work Blouse</td><td>₹199</td><td>₹30</td><td>—</td></tr>
+              <tr><td>Dupatta (Plain)</td><td>₹99</td><td>₹30</td><td>—</td></tr>
+              <tr><td>Dupatta (Heavy)</td><td>₹129</td><td>₹35</td><td>—</td></tr>
+              <tr><td>Stole</td><td>₹110</td><td>₹30</td><td>—</td></tr>
+              <tr><td>Scarf</td><td>₹110</td><td>₹30</td><td>—</td></tr>
+              <tr><td>Petticoat (Single color/layer)</td><td>₹135</td><td>₹65</td><td>—</td></tr>
+              <tr><td>Leggings</td><td>₹95</td><td>₹50</td><td>—</td></tr>
+              <tr><td>Night wear (Single Pc)</td><td>₹125</td><td>₹50</td><td>—</td></tr>
+              <tr><td>Under Garment</td><td>₹90</td><td>₹35</td><td>—</td></tr>
+              <tr><td>Slip</td><td>₹100</td><td>₹55</td><td>—</td></tr>
+              <tr><td>Socks</td><td>₹40</td><td>—</td><td>—</td></tr>
+              <tr><td>Stockings</td><td>₹60</td><td>—</td><td>—</td></tr>
+            </tbody>
+          </table>
+          <p class="note">For steam ironing, garments are delivered in bulk packing. *Starting prices may vary by size & quality.</p>
+        </div>
+      </div>
+
+      <!-- Men’s World -->
+      <div class="acc-item">
+        <div class="acc-head"><h3>For Him</h3><i class="fas fa-chevron-down"></i></div>
+        <div class="acc-body">
+          <table class="price-table">
+            <thead>
+              <tr><th>Item</th><th>Dry Clean</th><th>Only Steam Ironing</th><th>Stiffening</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Shirt / T‑Shirt (Plain)</td><td>₹95</td><td>₹25</td><td>₹60</td></tr>
+              <tr><td>Shirt (Silk)</td><td>₹95</td><td>₹30</td><td>—</td></tr>
+              <tr><td>Shirt (Heavy work)</td><td>₹129</td><td>₹45</td><td>₹55</td></tr>
+              <tr><td>Pull Over</td><td>₹140</td><td>₹50</td><td>₹70</td></tr>
+              <tr><td>Kurta (Plain)</td><td>₹120</td><td>₹45</td><td>₹70</td></tr>
+              <tr><td>Kurta (Silk)</td><td>₹180</td><td>₹55</td><td>—</td></tr>
+              <tr><td>Kurta (Heavy work)</td><td>₹210</td><td>₹65</td><td>₹100</td></tr>
+              <tr><td>Pyjama (Plain)</td><td>₹99</td><td>₹45</td><td>₹55</td></tr>
+              <tr><td>Pyjama (Silk)</td><td>₹105</td><td>₹55</td><td>—</td></tr>
+              <tr><td>Shalwar (Plain)</td><td>₹95</td><td>₹55</td><td>₹55</td></tr>
+              <tr><td>Shalwar (Silk)</td><td>₹110</td><td>₹65</td><td>—</td></tr>
+              <tr><td>Trouser / Jeans / Chinos</td><td>₹105</td><td>₹30</td><td>₹55</td></tr>
+              <tr><td>Trouser (Wool)</td><td>₹105</td><td>₹45</td><td>—</td></tr>
+              <tr><td>Shorts</td><td>₹75</td><td>₹30</td><td>₹55</td></tr>
+              <tr><td>Pants 3/4ths</td><td>₹90</td><td>₹30</td><td>₹55</td></tr>
+              <tr><td>Track Pant</td><td>₹105</td><td>₹30</td><td>—</td></tr>
+              <tr><td>Dhoti (Cotton)</td><td>₹160</td><td>₹60</td><td>₹80</td></tr>
+              <tr><td>Dhoti (Silk)</td><td>₹180</td><td>₹80</td><td>—</td></tr>
+              <tr><td>Lungi</td><td>₹100</td><td>₹30</td><td>—</td></tr>
+              <tr><td>Boiler Suit</td><td>₹180</td><td>₹100</td><td>—</td></tr>
+              <tr><td>Jump Suit</td><td>₹180</td><td>₹100</td></tr>
+              <tr><td>Prince Coat / Jodhpur</td><td>₹370</td><td>₹120</td></tr>
+              <tr><td>Blazer / Coat</td><td>₹249</td><td>₹120</td></tr>
+              <tr><td>Waist Coat</td><td>₹190</td><td>₹80</td></tr>
+              <tr><td>Suit (2 Piece)</td><td>₹349</td><td>₹150</td></tr>
+              <tr><td>Suit (3 Piece)</td><td>₹449</td><td>₹220</td></tr>
+              <tr><td>Woolen Overcoat (Knee Length)*</td><td>₹1350</td><td>₹550</td></tr>
+              <tr><td>Sherwani (Plain)</td><td>₹550</td><td>₹150</td></tr>
+              <tr><td>Sherwani (Work)*</td><td>₹650</td><td>₹250</td></tr>
+              <tr><td>Bohra Long Jacket / Thob (Arabi Jhubba)</td><td>₹250</td><td>₹120</td></tr>
+              <tr><td>Zipper*</td><td>₹200</td><td>₹55</td></tr>
+              <tr><td>Puffer Jacket / Windcheater*</td><td>₹550</td><td>—</td></tr>
+              <tr><td>Hoodie (Normal)</td><td>₹190</td><td>₹60</td></tr>
+              <tr><td>Hoodie (Heavy)*</td><td>₹250</td><td>₹60</td></tr>
+              <tr><td>Sweater</td><td>₹180</td><td>₹60</td></tr>
+              <tr><td>Denim Jacket</td><td>₹350</td><td>₹95</td></tr>
+              <tr><td>Leather Jacket*</td><td>₹590</td><td>—</td></tr>
+              <tr><td>Leather Jacket with Fur*</td><td>₹690</td><td>—</td></tr>
+              <tr><td>Leather Jacket (Heavy)*</td><td>₹790</td><td>—</td></tr>
+              <tr><td>Tie / Bow</td><td>₹70</td><td>₹35</td></tr>
+              <tr><td>Handkerchief</td><td>₹30</td><td>₹15</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- KG Services -->
+      <div class="acc-item">
+        <div class="acc-head"><h3>Everyday Services (per KG)</h3><i class="fas fa-chevron-down"></i></div>
+        <div class="acc-body">
+          <table class="price-table">
+            <thead><tr><th>Service</th><th>Price</th></tr></thead>
+            <tbody>
+              <tr><td>Wash & Steam Iron (per KG)</td><td>₹129</td></tr>
+              <tr><td>Wash & Fold (per KG)</td><td>₹99</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Shoes & Bags -->
+      <div class="acc-item">
+        <div class="acc-head"><h3>Shoes & Accessories</h3><i class="fas fa-chevron-down"></i></div>
+        <div class="acc-body">
+          <table class="price-table">
+            <thead><tr><th>Item</th><th>Washing Price</th></tr></thead>
+            <tbody>
+              <tr><td>Canvas Shoe*</td><td>₹329</td></tr>
+              <tr><td>Sports Shoe*</td><td>₹349</td></tr>
+              <tr><td>Ankles*</td><td>₹399</td></tr>
+              <tr><td>Leather Shoe*</td><td>₹449</td></tr>
+              <tr><td>Boots</td><td>₹699</td></tr>
+              <tr><td>Biker’s Long Shoes*</td><td>₹999</td></tr>
+              <tr><td>Formal Shoes</td><td>₹329</td></tr>
+              <tr><td>Ladies Purse (Small)*</td><td>₹249</td></tr>
+              <tr><td>Ladies Purse (Large)*</td><td>₹399</td></tr>
+              <tr><td>Laptop Bag*</td><td>₹349</td></tr>
+              <tr><td>Duffle Bag*</td><td>₹399</td></tr>
+              <tr><td>Trolley Bag (Small)*</td><td>₹499</td></tr>
+              <tr><td>Trolley Bag (Medium)*</td><td>₹599</td></tr>
+              <tr><td>Suit Case*</td><td>₹999</td></tr>
+            </tbody>
+          </table>
+          <p class="note">*Prices vary by size & condition. These are starting prices.</p>
+        </div>
+      </div>
+
+      <!-- Curtains -->
+      <div class="acc-item">
+        <div class="acc-head"><h3>Curtains and Drapes</h3><i class="fas fa-chevron-down"></i></div>
+        <div class="acc-body">
+          <table class="price-table">
+            <thead><tr><th>Item</th><th>Cotton</th><th>Medium</th><th>Heavy</th></tr></thead>
+            <tbody>
+              <tr><td>Curtain – SFT</td><td>₹30</td><td>₹35</td><td>₹45</td></tr>
+            </tbody>
+          </table>
+          <p class="note">Curtains per KG (Small): ₹279</p>
+        </div>
+      </div>
+
+      <!-- Household -->
+      <div class="acc-item">
+        <div class="acc-head"><h3>Home Comforts</h3><i class="fas fa-chevron-down"></i></div>
+        <div class="acc-body">
+          <table class="price-table">
+            <thead><tr><th>Item</th><th>Dry Clean</th><th>Only Steam Ironing</th></tr></thead>
+            <tbody>
+              <tr><td>Bedsheet (Single)*</td><td>₹149</td><td>₹50</td></tr>
+              <tr><td>Bedsheet (Double)*</td><td>₹199</td><td>₹65</td></tr>
+              <tr><td>Blanket / Quilt (Single)</td><td>₹349</td><td>—</td></tr>
+              <tr><td>Blanket / Quilt (Double)</td><td>₹449</td><td>—</td></tr>
+              <tr><td>Apron</td><td>₹100</td><td>—</td></tr>
+              <tr><td>Comforter (Single)</td><td>₹349</td><td>—</td></tr>
+              <tr><td>Comforter (Double)</td><td>₹449</td><td>—</td></tr>
+              <tr><td>Bath Towel (S/M/L)</td><td colspan="2">₹79 / ₹99 / ₹110</td></tr>
+              <tr><td>Pillow Cover (S/L)</td><td colspan="2">₹49 / ₹69</td></tr>
+              <tr><td>Fancy Cushion Covers (S/L)</td><td colspan="2">₹79 / ₹99</td></tr>
+              <tr><td>Table Cloth (S/L)</td><td colspan="2">₹99 / ₹129</td></tr>
+              <tr><td>Pillow (S/L/Conical)</td><td colspan="2">₹129 / ₹149 / ₹189</td></tr>
+              <tr><td>Cushions (S/L)</td><td colspan="2">₹149 / ₹169 / ₹199</td></tr>
+              <tr><td>Shawl (Light / Heavy)</td><td colspan="2">₹129 / ₹179</td></tr>
+              <tr><td>Shawl (Wool) (S/L)</td><td colspan="2">₹149 / ₹199</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Carpets & Rugs -->
+      <div class="acc-item">
+        <div class="acc-head"><h3>Carpets & Rugs</h3><i class="fas fa-chevron-down"></i></div>
+        <div class="acc-body">
+          <table class="price-table">
+            <thead><tr><th>Item</th><th>Washing</th></tr></thead>
+            <tbody>
+              <tr><td>Carpet 2ft × 2ft*</td><td>₹349</td></tr>
+              <tr><td>Carpet 3ft × 3ft*</td><td>₹449</td></tr>
+              <tr><td>Carpet 6ft × (—)*</td><td>₹899</td></tr>
+              <tr><td>Rug 2ft × 1ft*</td><td>₹299</td></tr>
+              <tr><td>Rug 2ft × 2ft*</td><td>₹499</td></tr>
+              <tr><td>Rug 2ft × 3ft*</td><td>₹699</td></tr>
+              <tr><td>Door Mat*</td><td>₹69</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Children -->
+      <div class="acc-item">
+        <div class="acc-head"><h3>For Kids</h3><i class="fas fa-chevron-down"></i></div>
+        <div class="acc-body">
+          <table class="price-table">
+            <thead><tr><th>Item</th><th>Dry Clean</th><th>Only Steam Ironing</th><th>Stiffening</th></tr></thead>
+            <tbody>
+              <tr><td>Kid’s Shirt / T‑Shirt</td><td>₹79</td><td>₹20</td><td>₹25</td></tr>
+              <tr><td>Kid’s Shirt (Work)</td><td>₹99</td><td>₹30</td><td>—</td></tr>
+              <tr><td>Kid’s Pant / Jeans</td><td>₹99</td><td>₹20</td><td>₹25</td></tr>
+              <tr><td>Kid’s Coat</td><td>₹149</td><td>₹69</td><td>—</td></tr>
+              <tr><td>Kid’s Sherwani</td><td>₹199</td><td>₹89</td><td>—</td></tr>
+              <tr><td>Kid’s Waist Coat</td><td>₹129</td><td>₹25</td><td>—</td></tr>
+              <tr><td>Baby Kurta (Plain)</td><td>₹69</td><td>₹20</td><td>₹30</td></tr>
+              <tr><td>Baby Pyjama / Shalwar</td><td>₹99</td><td>₹20</td><td>₹20</td></tr>
+              <tr><td>Baby Frock*</td><td>₹149</td><td>₹40</td><td>—</td></tr>
+              <tr><td>Baby Fancy Dress*</td><td>₹199</td><td>₹60</td><td>—</td></tr>
+              <tr><td>Baby Night Wear (2 Pc)</td><td>₹129</td><td>₹60</td><td>—</td></tr>
+              <tr><td>Baby Under Garment</td><td>₹30</td><td>—</td><td>—</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Soft Toys -->
+      <div class="acc-item">
+        <div class="acc-head"><h3>Toys & Plush Case</h3><i class="fas fa-chevron-down"></i></div>
+        <div class="acc-body">
+          <table class="price-table">
+            <thead><tr><th>Item</th><th>Washing</th></tr></thead>
+            <tbody>
+              <tr><td>Soft Toy (Small)</td><td>₹99</td></tr>
+              <tr><td>Soft Toy – 1 ft</td><td>₹199</td></tr>
+              <tr><td>Soft Toy – 2 ft</td><td>₹299</td></tr>
+              <tr><td>Soft Toy – 3 ft</td><td>₹399</td></tr>
+              <tr><td>Soft Toy – 4 ft</td><td>₹499</td></tr>
+              <tr><td>Soft Toy – 5 ft</td><td>₹599</td></tr>
+              <tr><td>Soft Toy – 6 ft</td><td>₹699</td></tr>
+            </tbody>
+          </table>
+          <p class="note">For steam ironing services, garments are delivered in bulk packing. *Starting prices apply.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <p>&copy; <span id="year"></span> Fresh Threads Laundry & Dry Cleaning Services. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+<script>
+// Accordion toggle
+document.querySelectorAll('.acc-head').forEach(h => {
+  h.addEventListener('click', () => h.parentElement.classList.toggle('open'));
+});
+
+// Search filter: all collapsed by default, only matching sections open
+const searchInput = document.getElementById('priceSearch');
+
+function applySearch(q) {
+  const query = (q || '').trim().toLowerCase();
+  const accItems = Array.from(document.querySelectorAll('.acc-item'));
+  let anyVisible = false;
+
+  accItems.forEach((acc) => {
+    const rows = Array.from(acc.querySelectorAll('.price-table tbody tr'));
+    let visibleCount = 0;
+
+    rows.forEach(tr => {
+      const text = tr.innerText.toLowerCase();
+      const match = query === '' || text.includes(query);
+      tr.style.display = match ? '' : 'none';
+      if (match) visibleCount++;
+    });
+
+    if (query) {
+      if (visibleCount > 0) {
+        acc.classList.add('open');
+        acc.style.display = '';
+        anyVisible = true;
+      } else {
+        acc.classList.remove('open');
+        acc.style.display = 'none'; // hide sections with zero matches
+      }
+    } else {
+      // Reset state: show all sections and rows, but keep all collapsed
+      rows.forEach(tr => tr.style.display = '');
+      acc.style.display = '';
+      acc.classList.remove('open');
+    }
+  });
+
+  // Optional UX: when searching, scroll the first visible, opened section into view
+  if (query && anyVisible) {
+    const firstVisible = accItems.find(acc => acc.style.display !== 'none');
+    if (firstVisible) firstVisible.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+}
+
+searchInput.addEventListener('input', () => applySearch(searchInput.value));
+// Initialize on load: no query -> everything collapsed
+applySearch('');
+
+// Current year
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
