@@ -113,7 +113,6 @@
 
   const token = getInvoiceToken();
   const apiUrl = `https://sta.freshthreadslaundry.co.in/api/bill-info/${token}`;
-  //const apiUrl = `http://127.0.0.1:5000/api/bill-info/T3865Lbr0DZGBA`;
   let qrUrl = ""; // <-- make it global
 
   function downloadQR() {
@@ -141,26 +140,8 @@
       const status = data.payment_status;
 
       const subtotal = items.reduce((sum, i) => sum + parseFloat(i.qty) * parseFloat(i.rate), 0);
-
-// Discount
-const discountValue = parseFloat(bill.discount_value || 0);
-const discount = (bill.discount_type === "%" ? subtotal * discountValue / 100 : discountValue);
-
-// Surcharge (Express Service)
-const expressService = parseInt(bill.express_service || 0, 10) === 1;
-const surchargeType = (bill.surcharge_type || "Rs");
-const surchargeValue = parseFloat(bill.surcharge_value || 0);
-let surcharge = parseFloat(bill.surcharge_amount || 0);
-
-// If surcharge_amount isn't stored (or is 0), compute it from type/value
-if (expressService && (!surcharge || surcharge <= 0) && surchargeValue > 0) {
-  surcharge = (surchargeType === "%" ? (subtotal - discount) * surchargeValue / 100 : surchargeValue);
-}
-if (!expressService) surcharge = 0;
-
-// Final total
-const final_total = (subtotal - discount + surcharge);
-
+      const discount = bill.discount_type === "%" ? subtotal * parseFloat(bill.discount_value) / 100 : parseFloat(bill.discount_value);
+      const final_total = subtotal - discount;
 
       const upiLink = `upi://pay?pa=freshthreads0549@iob&pn=Fresh Threads Laundry&am=${final_total.toFixed(2)}&cu=INR`;
       const isMobile = /Android|iPhone|iPad/i.test(navigator.userAgent);
@@ -221,11 +202,6 @@ const final_total = (subtotal - discount + surcharge);
             <tr>
               <td colspan="3" class="text-right">Discount</td>
               <td class="text-right">- ₹${discount.toFixed(2)}</td>
-            </tr>` : ""}
-            ${surcharge > 0 ? `
-            <tr>
-              <td colspan="3" class="text-right">Express Service</td>
-              <td class="text-right">₹${surcharge.toFixed(2)}</td>
             </tr>` : ""}
             <tr>
               <td colspan="2">Total Items: ${items.reduce((sum, i) => sum + parseInt(i.items), 0)}</td>
