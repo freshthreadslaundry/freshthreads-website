@@ -220,9 +220,21 @@
         html += `<div class="text-center mt-3 qr-box"><p><strong>Scan to Pay</strong></p><img src="${qrUrl}" alt="QR Code"></div>`;
       }
 
-      html += `<div class="text-center mt-4">
-        <p><strong>Thank you! Visit again 🙏</strong></p>
-      </div>`;
+html += `<div class="text-center mt-4">
+  <p><strong>Thank you! Visit again 🙏</strong></p>
+
+  <p style="font-size: 10px; color: #555; margin-top: 8px; line-height: 1.3;">
+    All items are accepted subject to our Terms & Conditions displayed at the store and available online.
+  </p>
+
+  <p style="font-size: 10px; margin-top: 2px;">
+    📄 <a href="https://freshthreadslaundry.co.in/terms.html"
+         target="_blank"
+         style="text-decoration: underline; color: inherit;">
+        View Terms & Conditions
+    </a>
+  </p>
+</div>`;
 
       document.getElementById("billContent").innerHTML = html;
     })
