@@ -113,8 +113,6 @@
 
   const token = getInvoiceToken();
   const apiUrl = `/.netlify/functions/bills?token=${encodeURIComponent(token)}`;
-  //const apiUrl = `https://sta.freshthreadslaundry.co.in/api/bill-info/${token}`;
-  //const apiUrl = `http://127.0.0.1:5000/api/bill-info/T3865Lbr0DZGBA`;
   let qrUrl = ""; // <-- make it global
 
   function downloadQR() {
