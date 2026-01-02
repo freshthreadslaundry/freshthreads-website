@@ -50,6 +50,8 @@ header .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding-left: 1px;
+    padding-right: 1px;
 }
 
 .logo h1 {
@@ -170,6 +172,186 @@ nav ul li a:hover {
     padding: 80px 0;
     text-align: center;
     background-color: var(--white);
+}
+
+/* Membership Section */
+.membership-section {
+    padding: 70px 0 80px;
+    background: linear-gradient(180deg, var(--white) 0%, #f3fbf4 100%);
+}
+
+.newsflash {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(76, 175, 80, 0.10);
+    border: 1px solid rgba(76, 175, 80, 0.25);
+    padding: 12px 14px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+    margin-bottom: 26px;
+}
+
+.newsflash-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 700;
+    color: var(--white);
+    background: var(--primary-color);
+    padding: 8px 12px;
+    border-radius: 999px;
+    letter-spacing: 0.3px;
+    white-space: nowrap;
+    box-shadow: 0 6px 14px rgba(76, 175, 80, 0.25);
+}
+
+.newsflash-badge i {
+    animation: pulseFlash 1.4s ease-in-out infinite;
+}
+
+@keyframes pulseFlash {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.12); opacity: 0.85; }
+}
+
+.newsflash-ticker {
+    flex: 1;
+    overflow: hidden;
+    min-width: 0;
+}
+
+.newsflash-track {
+    display: inline-flex;
+    gap: 60px;
+    white-space: nowrap;
+    will-change: transform;
+    animation: tickerMove 18s linear infinite;
+}
+
+.newsflash-track span {
+    font-weight: 600;
+    color: #1f3d22;
+}
+
+@keyframes tickerMove {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+.membership-section h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    margin-bottom: 14px;
+    color: var(--primary-color);
+}
+
+.membership-intro {
+    max-width: 920px;
+    font-size: 17px;
+    color: var(--dark-grey);
+    line-height: 1.9;
+    margin-bottom: 26px;
+}
+
+.membership-table-wrap {
+    background: var(--white);
+    border-radius: 14px;
+    box-shadow: 0 10px 26px rgba(0,0,0,0.08);
+    border: 1px solid rgba(0,0,0,0.06);
+    overflow-x: auto;
+}
+
+.membership-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 720px;
+}
+
+.membership-table thead th {
+    text-align: left;
+    padding: 16px 18px;
+    background: rgba(76, 175, 80, 0.08);
+    color: #1f3d22;
+    font-weight: 700;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+
+.membership-table tbody td {
+    padding: 16px 18px;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+    color: var(--text-color);
+    vertical-align: middle;
+}
+
+.membership-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.membership-table tbody tr.highlight {
+    background: rgba(255, 193, 7, 0.10);
+}
+
+.plan-name {
+    font-weight: 800;
+    color: #1f3d22;
+}
+
+.plan-tag {
+    display: inline-block;
+    margin-top: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--primary-color);
+    background: rgba(76, 175, 80, 0.12);
+    padding: 5px 10px;
+    border-radius: 999px;
+}
+
+.membership-table td.extra {
+    font-weight: 800;
+    color: #0f6b1c;
+}
+
+.membership-notes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-top: 26px;
+    margin-bottom: 18px;
+}
+
+.membership-notes .note {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    background: rgba(255,255,255,0.85);
+    border: 1px solid rgba(0,0,0,0.06);
+    border-radius: 14px;
+    padding: 18px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+}
+
+.membership-notes .note i {
+    font-size: 20px;
+    color: var(--primary-color);
+    margin-top: 2px;
+}
+
+.membership-cta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+.membership-fineprint {
+    color: var(--dark-grey);
+    font-size: 14px;
+    margin: 0;
 }
 
 .services-section h3 {
@@ -357,6 +539,10 @@ footer {
         max-width: 500px;
         margin-top: 30px;
     }
+
+    .membership-notes {
+        grid-template-columns: 1fr;
+    }
 }
 
 @media (max-width: 768px) {
@@ -368,8 +554,17 @@ footer {
         font-size: 16px;
     }
 
-    .services-section h3, .about-content h3, .contact-section h3 {
+    .services-section h3, .about-content h3, .contact-section h3, .membership-section h3 {
         font-size: 30px;
+    }
+
+    .membership-intro {
+        font-size: 16px;
+    }
+
+    .membership-cta {
+        justify-content: center;
+        text-align: center;
     }
 
     .service-item img {
@@ -399,4 +594,16 @@ footer {
         padding: 8px 15px;
         font-size: 14px;
     }
+
+    .newsflash {
+        padding: 10px 12px;
+    }
+
+    .newsflash-track {
+        animation-duration: 14s;
+    }
+
+    .whatsapp-btn {
+  margin-left: 12px;
+}
 }

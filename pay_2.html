@@ -113,8 +113,6 @@
 
   const token = getInvoiceToken();
   const apiUrl = `/.netlify/functions/bills?token=${encodeURIComponent(token)}`;
-  //const apiUrl = `http://127.0.0.1:5000/api/bill-info/dOc7mUrcHNg9ow`;
-  
   let qrUrl = ""; // <-- make it global
 
   function downloadQR() {
@@ -159,22 +157,11 @@ if (expressService && (!surcharge || surcharge <= 0) && surchargeValue > 0) {
 }
 if (!expressService) surcharge = 0;
 
-// Final total (before wallet)
+// Final total
 const final_total = (subtotal - discount + surcharge);
 
-// ✅ Wallet (from API, server is source of truth)
-const wallet_used = parseFloat(data.wallet_used || 0);
-const wallet_balance = (data.wallet_balance !== undefined && data.wallet_balance !== null) ? parseFloat(data.wallet_balance) : null;
 
-// Payable after wallet (fallback to computed if API doesn't send final_payable)
-let final_payable = (data.final_payable !== undefined && data.final_payable !== null)
-  ? parseFloat(data.final_payable)
-  : (final_total - wallet_used);
-
-if (final_payable < 0) final_payable = 0;
-
-
-      const upiLink = `upi://pay?pa=freshthreads0549@iob&pn=Fresh Threads Laundry&am=${final_payable.toFixed(2)}&cu=INR`;
+      const upiLink = `upi://pay?pa=freshthreads0549@iob&pn=Fresh Threads Laundry&am=${final_total.toFixed(2)}&cu=INR`;
       const isMobile = /Android|iPhone|iPad/i.test(navigator.userAgent);
       qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(upiLink)}`;
 
@@ -239,22 +226,10 @@ if (final_payable < 0) final_payable = 0;
               <td colspan="3" class="text-right">Express Service</td>
               <td class="text-right">₹${surcharge.toFixed(2)}</td>
             </tr>` : ""}
-            
-            ${wallet_used > 0 ? `
             <tr>
-              <td colspan="3" class="text-right">Wallet Used</td>
-              <td class="text-right">- ₹${wallet_used.toFixed(2)}</td>
-            </tr>` : ""}
-
-    ${wallet_used > 0 ? `
-<tr>
-  <td colspan="3" class="text-right">Wallet Balance</td>
-  <td class="text-right">₹${wallet_balance.toFixed(2)}</td>
-</tr>` : ""}
-<tr>
               <td colspan="2">Total Items: ${items.reduce((sum, i) => sum + parseInt(i.items), 0)}</td>
               <td class="text-right"><strong>Final Bill</strong></td>
-              <td class="text-right"><strong>₹${final_payable.toFixed(2)}</strong></td>
+              <td class="text-right"><strong>₹${final_total.toFixed(2)}</strong></td>
             </tr>
           </tfoot>
         </table>
