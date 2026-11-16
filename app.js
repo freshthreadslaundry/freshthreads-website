@@ -100,16 +100,47 @@
   });
   document.querySelector('#booking-area')?.addEventListener('input', event => event.target.setCustomValidity(''));
 
-  if (!window.PRICE_ITEMS) return;
-  const results = document.querySelector('#price-results');
-  const feedStatus = document.querySelector('#price-feed-status');
-  const referenceItems = window.PRICE_ITEMS;
-  let priceItems = referenceItems;
   const priceKey = (category, item, order) => JSON.stringify([category, item, order]);
   const displayINR = value => {
     const rate = value.trim();
     return /^\d/.test(rate) ? '₹' + rate : rate;
   };
+
+  async function loadPriceRates() {
+    const response = await fetch('/.netlify/functions/website-prices', {
+      signal: AbortSignal.timeout(5000),
+    });
+    if (!response.ok) throw new Error('Catalogue unavailable');
+    const { rates } = await response.json();
+    if (!Array.isArray(rates) || !rates.length || !rates.every(row =>
+      typeof row?.category === 'string' && typeof row.item_name === 'string' &&
+      Number.isInteger(row.rate_order) && row.rate_order > 0 &&
+      typeof row.display_rate === 'string' && row.display_rate.trim())) {
+      throw new Error('Invalid catalogue');
+    }
+    return new Map(rates.map(row => [
+      priceKey(row.category, row.item_name, row.rate_order), displayINR(row.display_rate),
+    ]));
+  }
+
+  const offeringRates = document.querySelectorAll('[data-rate-category]');
+  if (offeringRates.length) {
+    loadPriceRates().then(rates => {
+      offeringRates.forEach(element => {
+        const { rateCategory, rateItem, rateOrder, rateUnit } = element.dataset;
+        const rate = rates.get(priceKey(rateCategory, rateItem, Number(rateOrder)));
+        if (rate?.startsWith('₹')) element.textContent = `${rate} / ${rateUnit}`;
+      });
+    }).catch(() => {
+      // The links to the pricing page are available if live rates cannot load.
+    });
+  }
+
+  if (!window.PRICE_ITEMS) return;
+  const results = document.querySelector('#price-results');
+  const feedStatus = document.querySelector('#price-feed-status');
+  const referenceItems = window.PRICE_ITEMS;
+  let priceItems = referenceItems;
   const count = document.querySelector('#result-count');
   const search = document.querySelector('#price-search');
   const filters = document.querySelector('#price-filters');
@@ -188,20 +219,7 @@
   if (feedStatus) {
     (async () => {
       try {
-        const response = await fetch('/.netlify/functions/website-prices', {
-          signal: AbortSignal.timeout(5000),
-        });
-        if (!response.ok) throw new Error('Catalogue unavailable');
-        const { rates } = await response.json();
-        if (!Array.isArray(rates) || !rates.length || !rates.every(row =>
-          typeof row?.category === 'string' && typeof row.item_name === 'string' &&
-          Number.isInteger(row.rate_order) && row.rate_order > 0 &&
-          typeof row.display_rate === 'string' && row.display_rate.trim())) {
-          throw new Error('Invalid catalogue');
-        }
-        const lookup = new Map(rates.map(row => [
-          priceKey(row.category, row.item_name, row.rate_order), displayINR(row.display_rate),
-        ]));
+        const lookup = await loadPriceRates();
         const liveItems = referenceItems.map(item => ({
           ...item,
           prices: item.prices.flatMap((price, i) => {
